@@ -48,7 +48,7 @@
         @click.stop
       >
         <div
-          class="max-h-[400px] md:h-[700px] w-full overflow-hidden bg-[#000000] flex items-center justify-center"
+          class="h-auto lg:h-[600px] w-full overflow-hidden bg-[#000000] flex items-center justify-center"
         >
           <NuxtImg
             :src="image.urls.regular"
