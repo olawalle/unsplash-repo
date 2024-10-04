@@ -39,23 +39,28 @@
       @click="closeModal"
     >
       <span
-        class="absolute top-12 right-12 cursor-pointer text-[40px] text-white"
+        class="absolute top-12 right-4 md:right-12 cursor-pointer text-[40px] text-white"
         @click="closeModal"
         >&times;</span
       >
-      <div class="rounded-[20px] overflow-hidden relative w-auto" @click.stop>
-        <div class="h-[700px] w-full overflow-hidden bg-[#000000]">
+      <div
+        class="rounded-[12px] overflow-hidden relative w-[90%] md:w-auto"
+        @click.stop
+      >
+        <div
+          class="max-h-[400px] md:h-[700px] w-full overflow-hidden bg-[#000000] flex items-center justify-center"
+        >
           <NuxtImg
             :src="image.urls.regular"
             :alt="image.user.name"
-            class="w-auto h-full mx-auto"
+            class="w-full md:w-auto h-auto md:h-full mx-auto"
           />
         </div>
-        <div class="text-left bg-white p-6">
-          <h2 class="text-[40px] font-semibold capitalize">
+        <div class="text-left bg-white p-4 md:p-6">
+          <h2 class="text-[24px] md:text-[40px] font-semibold capitalize">
             {{ image.user.name }}
           </h2>
-          <p class="text-gray-600 text-[20px]">
+          <p class="text-gray-600 text-[14px] md:text-[20px]">
             {{ image.user.location || "Unknown" }}
           </p>
         </div>

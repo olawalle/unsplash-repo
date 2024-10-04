@@ -4,56 +4,52 @@
       class="bg-[#dde3ea] mx-auto py-[100px] sm:py-[140px] sm:px-0 px-[20px]"
     >
       <div class="container mx-auto">
-        <template v-if="searchCompleted">
-          <div class="flex justify-between items-center">
-            <p class="text-[20px] md:text-[56px] font-medium">
-              <span class="text-[#253955]">Search Results for</span>
-              <span class="text-[#6f7b93]">"{{ searchTerm }}"</span>
-            </p>
+        <div class="flex justify-between items-center" v-if="searchCompleted">
+          <p class="text-[20px] md:text-[56px] font-medium">
+            <span class="text-[#253955]">Search Results for</span>
+            <span class="text-[#6f7b93]">"{{ searchTerm }}"</span>
+          </p>
 
-            <span
-              class="cursor-pointer text-[40px] text-white"
-              @click="openSearch"
-              >&times;</span
+          <span
+            class="cursor-pointer text-[40px] text-white"
+            @click="openSearch"
+            >&times;</span
+          >
+        </div>
+        <div class="w-full" v-else>
+          <p class="text-[20px] md:text-[56px] font-medium" v-if="loading">
+            <span class="text-[#253955]"
+              >Searching <span v-if="searchTerm">for</span></span
             >
-          </div>
-        </template>
-        <template v-else>
-          <div class="w-full">
-            <p class="text-[56px] font-medium" v-if="loading">
-              <span class="text-[#253955]"
-                >Searching <span v-if="searchTerm">for</span></span
+            <span class="text-[#6f7b93]" v-if="searchTerm"
+              >"{{ searchTerm }}"</span
+            >
+          </p>
+          <div class="relative flex items-center" v-else>
+            <span class="absolute z-20 -mt-4 ml-6">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8 text-[#cfcece]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-              <span class="text-[#6f7b93]" v-if="searchTerm"
-                >"{{ searchTerm }}"</span
-              >
-            </p>
-            <div class="relative flex items-center" v-else>
-              <span class="absolute z-20 -mt-4 ml-6">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-8 w-8 text-[#cfcece]"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 21l-4.35-4.35M16.5 10.5A6.5 6.5 0 1110 4a6.5 6.5 0 016.5 6.5z"
-                  />
-                </svg>
-              </span>
-              <input
-                v-model="searchTerm"
-                @input="debouncedFetchImages"
-                placeholder="Search for photo"
-                class="absolute z-10 text-[20px] sm:text-[30px] w-full p-3 !pl-[100px] sm:p-5 mb-5 border-0 rounded-lg outline-none"
-              />
-            </div>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-4.35-4.35M16.5 10.5A6.5 6.5 0 1110 4a6.5 6.5 0 016.5 6.5z"
+                />
+              </svg>
+            </span>
+            <input
+              v-model="searchTerm"
+              @input="debouncedFetchImages"
+              placeholder="Search for photo"
+              class="absolute z-10 text-[20px] sm:text-[30px] w-full p-3 pl-[60px] md:pl-[100px] sm:py-5 mb-5 border-0 rounded-lg outline-none"
+            />
           </div>
-        </template>
+        </div>
       </div>
     </div>
 
